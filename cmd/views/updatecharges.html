@@ -1,0 +1,36 @@
+<html>
+    <head>
+        <style>
+            .input {
+                width: 290px;
+                height: 70px;
+            }
+            .submit {
+                font-size: 20px;
+                color: red;
+            }
+            .container {
+                padding: 20%;
+                background-color: #c0caa7;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+        {{if .Success }}
+            <h1>Successfully updated Charges</h1>
+            <a href="/home">Home</a>
+        {{else}}
+            <form method="post" action="#">
+                <label for="means">Transport Means</label><br>
+                <input type="text" name="means" id="means" class="input"><br>
+               <label for="load">Load Capacity in tonnes</label><br>
+                <input type="text" name="load" id="load" class="input"><br>
+               <label for="cost">Cost in KSh per km</label><br>
+                <input type="text" name="cost" id="cost" class="input"><br><br>
+                <input type="submit" value="Update Charges" class="submit">
+            </form>
+        {{end}}
+        </div>
+    </body>
+</html>

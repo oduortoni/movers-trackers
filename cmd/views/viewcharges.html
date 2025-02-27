@@ -1,0 +1,39 @@
+<html>
+    <head>
+        <style>
+          body {
+              background-color: lightblue;
+          }
+          .container {
+            padding: 10px;
+            margin: 20%;
+          }
+        table, th, td {
+            border: solid red 1px;
+            width: 700px;
+            font-size: 30px;
+        }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+          <table id="users" class="users">
+              <caption>Transport Charges</caption>
+              <tr>
+                  <th>Transport Means</th>
+                  <th>Load capacity in tonnes</th>
+                  <th>Cost in KSh per km</th>
+              </tr>
+              {{range .}}
+                <tr>
+                    <td>{{.Means}}</td>
+                    <td>{{.Load}}</td>
+                    <td>{{.Cost}}</td>
+                </tr>
+              {{end}}
+          </table>
+          <br><br>
+          <a href="/">Home</a>
+        </div>
+    </body>
+</html>

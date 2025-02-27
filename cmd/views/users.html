@@ -1,0 +1,44 @@
+<html>
+<head>
+ <style>
+   body {
+       background-color: #c0c0c0;
+   }
+   table, th, td {
+       border: solid red 1px;
+       width: 700px;
+       font-size: 30px;
+   }
+  .users {
+      text-align: center;
+      margin-left: 20px;
+  }
+ </style>
+</head>
+<body>
+  <div class="display">
+    <table id="users" class="users">
+        <caption>Registered Users</caption>
+        <tr>
+            <th>Id</th>
+            <th>First Name</th>
+            <th>Second Name</th>
+            <th>Group Id</th>
+        </tr>
+		{{range .}}
+		  <tr>
+			<td>{{.Id }}</td>
+			<td>{{.First}}</td>
+			<td>{{.Second}}</td>
+			<td>{{.Gid}}</td>
+		  </tr>
+		{{end}}
+    </table>
+    <br><br>
+    <a href="/">Home</a>
+  </div>
+</body>
+</html>
+
+
+

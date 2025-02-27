@@ -1,0 +1,36 @@
+<html>
+    <head>
+        
+    </head>
+    <body>
+        <div class="container">
+        {{if .Success }}
+            <table>
+                <tr>
+                    <th colspan="5">MOVERS TRANSPORT SYSTEM</th>
+                </tr>
+                <tr></tr>
+            </table>
+            <p>{{.Charges.TotalCost}}</p>
+        {{else}}
+            {{if .ExistGroup}}
+                <h1>Sorry! User Not registered.</h1>
+            {{else}}
+            <form method="post" action="#">
+                <label for="group">Group Name</label><br>
+                <input type="text" name="group" id="group" class="input"><br>
+               <label for="from">From / Source</label><br>
+                <input type="text" name="from" id="from" class="input"><br>
+               <label for="to">To / Destination</label><br>
+                <input type="text" name="to" id="to" class="input"><br><br>
+                <label for="load">Load in Tonnes</label><br>
+                <input type="text" name="load" id="load" class="input"><br><br>
+                <input type="submit" value="Generate Reciept" class="submit">
+            </form>
+            {{end}}
+        {{end}}
+        </div>
+        <br><br>
+        <a href="/home">Home</a>
+    </body>
+</html>

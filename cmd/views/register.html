@@ -1,0 +1,287 @@
+<html>
+ <head>
+     <style>
+         body {
+             padding: 25px;
+         }
+         .producerbtn {
+             height: 80px;
+             width: 240px;
+             color: purple;
+             padding: 10px;
+             background-color: khaki;
+             margin-right: 20px;
+             font-size: 25px;
+         }
+         .formclass {
+             margin-left: 20%;
+             margin-top: 30%;
+             border: solid green;
+             background: #c0c0c0;
+             padding: 15%;
+             margin-right: 20%;
+         }
+         .submitclass {
+             margin-top: 15px;
+             font-size: 18px;
+             color: yellow;
+             background-color: black;
+             width: 200px;
+             height: 40px;
+         }
+         .firmsize {
+             display: none;
+         }
+         .producer-confirm {
+             border: solid black 5px;
+             width: 60%;
+             height: 20%;
+             background-color: #c0c5cf;
+             font-size: 60px;
+             padding-top: 50px;
+             padding-left: 120px;
+             padding-right: 20px;
+         }
+         .group-size {
+             margin-top: 20px;
+             font-size: 16px;
+         }
+     </style>
+ </head>
+<body>
+{{if .Success}}
+	<h1>Successfully registered group</h1>
+	<a href="/">Click to go back home</a>
+{{else}}
+<!--Parent div to contain elements-->
+<div id="formdiv">
+  <div id="producerdiv">
+  <p>
+      <p>
+          There are two types of producers:
+          <ol>
+              <li>Large scale: If you mass produce as an individual.<br>And if your farm size is greater than 2.5 hactares.</li>
+              <li>Small scale: Any producers that have smaller tracts of land.<br>And are willing to reap the benefits of group membership.
+              </li>
+          </ol>
+          <br>
+      </p>
+      
+      <hr>
+      <div class="producer-confirm">
+      <p>
+          Click on type of farmer you are
+      </p>
+      <p>
+      <button class="producerbtn" onClick="large_scale()">Large Scale</button>
+      <button class="producerbtn" onClick="customize_form()">Group of Farmers</button>
+     </p>
+     </div>
+  </p>
+ </div>
+</div><!--end parent div-->
+{{end}}
+
+<script>
+function large_scale() {
+  var br = document.createElement("br");
+  var formdiv = document.getElementById("formdiv");
+  formdiv.innerHTML = " ";
+  var form = document.createElement("form");
+  form.setAttribute("action", "#");
+  form.setAttribute("method", "post");
+  form.setAttribute("class", "formclass");
+  
+  var label_group = document.createElement("label");
+  label_group.innerText = "Group Name";
+  label_group.setAttribute("for", "membership");
+  var input_group = document.createElement("input");
+  input_group.setAttribute("id", "membership");
+  input_group.setAttribute("type", "text");
+  input_group.setAttribute("name", "membership");
+  
+  var label_location = document.createElement("label");
+  label_location.innerText = "Location";
+  label_location.setAttribute("for", "location");
+  var input_location = document.createElement("input");
+  input_location.setAttribute("id", "location");
+  input_location.setAttribute("type", "text");
+  input_location.setAttribute("name", "location");
+  
+  var label_produce = document.createElement("label");
+  label_produce.innerText = "Type of Produce";
+  label_produce.setAttribute("for", "produce");
+  var input_produce = document.createElement("input");
+  input_produce.setAttribute("id", "produce");
+  input_produce.setAttribute("type", "text");
+  input_produce.setAttribute("name", "produce");
+  
+  //specific to large scale user
+  var first_name = document.createElement("input");
+  first_name.setAttribute("name", "fname");
+  first_name.setAttribute("id", "fname");
+  first_name.setAttribute("type", "text");
+  var label_first = document.createElement("label");
+  label_first.setAttribute("for", "fname");
+  label_first.innerText = "First Name";
+  
+  var second_name = document.createElement("input");
+  second_name.setAttribute("name", "sname");
+  second_name.setAttribute("id", "sname");
+  second_name.setAttribute("type", "text");
+  var label_second = document.createElement("label");
+  label_second.setAttribute("for", "sname");
+  label_second.innerText = "Second Name";
+  //end large scale
+  
+  //firm size detail if single owned
+  var firmsize = document.createElement("input");
+  firmsize.setAttribute("type", "text");
+  firmsize.setAttribute("value", "single");
+  firmsize.setAttribute("id", "firmsize");
+  firmsize.setAttribute("name", "firmsize");
+  firmsize.setAttribute("class", "firmsize");
+  
+  let submit = document.createElement("input");
+  submit.setAttribute("class", "submitclass");
+  submit.setAttribute("type", "submit");
+  submit.setAttribute("value", "Register");
+  
+  form.appendChild(label_first);
+  form.appendChild(br.cloneNode());
+  form.appendChild(first_name);
+  form.appendChild(br.cloneNode());
+  form.appendChild(label_second);
+  form.appendChild(br.cloneNode());
+  form.appendChild(second_name);
+  form.appendChild(br.cloneNode());
+  form.appendChild(label_group);
+  form.appendChild(br.cloneNode());
+  form.appendChild(input_group);
+  form.appendChild(br.cloneNode());
+  form.appendChild(label_location);
+  form.appendChild(br.cloneNode());
+  form.appendChild(input_location);
+  form.appendChild(br.cloneNode());
+  form.appendChild(label_produce);
+  form.appendChild(br.cloneNode());
+  form.appendChild(input_produce);
+  form.appendChild(br.cloneNode());
+  form.appendChild(firmsize);
+  form.appendChild(br.cloneNode());
+  form.appendChild(submit);
+  
+  document.body.appendChild(form);
+}
+function customize_form() {
+    var br = document.createElement("br");
+  formdiv = document.getElementById("formdiv");
+  formdiv.innerHTML = " ";
+  
+  var form = document.createElement("form");
+  form.setAttribute("class", "formclass");
+  
+  var label_group_size = document.createElement("label");
+  label_group_size.innerText = "Number of Group Members";
+  label_group_size.setAttribute("for", "group_size");
+  label_group_size.setAttribute("font-size", "27px");
+  var input_group_size = document.createElement("input");
+  input_group_size.setAttribute("id", "group_size");
+  input_group_size.setAttribute("type", "text");
+  input_group_size.setAttribute("name", "group_size");
+  input_group_size.setAttribute("required", true)
+  
+  var submit = document.createElement("button");
+  submit.setAttribute("class", "group-size");
+  submit.innerText = "Click To Start registration";
+  submit.addEventListener("click", get_count);
+  function get_count() {
+      var number = Integer.parseInt(document.getElementById("group_size").value)
+      alert(number)
+      small_scale(number)
+  };
+  
+  form.appendChild(label_group_size);
+  form.appendChild(br.cloneNode());
+  form.appendChild(br.cloneNode());
+  form.appendChild(input_group_size);
+  form.appendChild(br.cloneNode());
+  form.appendChild(submit);
+  
+  formdiv.appendChild(form)
+}
+function small_scale(group_size) {
+  var br = document.createElement("br");
+  formdiv = document.getElementById("formdiv");
+  formdiv.innerHTML = " ";
+  var form = document.createElement("form");
+  form.setAttribute("action", "#");
+  form.setAttribute("method", "post");
+  form.setAttribute("class", "formclass");
+  
+  var label_group = document.createElement("label");
+  label_group.innerText = "Group Name";
+  label_group.setAttribute("for", "group");
+  var input_group = document.createElement("input");
+  input_group.setAttribute("id", "group");
+  input_group.setAttribute("type", "text");
+  input_group.setAttribute("name", "group");
+  
+  var label_location = document.createElement("label");
+  label_location.innerText = "Location";
+  label_location.setAttribute("for", "location");
+  var input_location = document.createElement("input");
+  input_location.setAttribute("id", "location");
+  input_location.setAttribute("type", "text");
+  input_location.setAttribute("name", "location");
+  
+  var label_produce = document.createElement("label");
+  label_produce.innerText = "Type of Produce";
+  label_produce.setAttribute("for", "produce");
+  var input_produce = document.createElement("input");
+  input_produce.setAttribute("id", "produce");
+  input_produce.setAttribute("type", "text");
+  input_produce.setAttribute("name", "produce");
+  
+  //set frim size group or large single owned
+  var firmsize = document.createElement("input");
+  firmsize.setAttribute("type", "text");
+  firmsize.setAttribute("value", "cooperation");
+  firmsize.setAttribute("id", "firmsize");
+  firmsize.setAttribute("name", "firmsize");
+  firmsize.setAttribute("class", "firmsize");
+  
+  let submit = document.createElement("input");
+  submit.setAttribute("type", "submit");
+  submit.setAttribute("value", "Register");
+  submit.setAttribute("class", "submitclass");
+  
+  form.appendChild(label_group);
+  form.appendChild(br.cloneNode());
+  form.appendChild(input_group);
+  form.appendChild(br.cloneNode());
+  form.appendChild(label_location);
+  form.appendChild(br.cloneNode());
+  form.appendChild(input_location);
+  form.appendChild(br.cloneNode());
+  form.appendChild(label_produce);
+  form.appendChild(br.cloneNode());
+  form.appendChild(input_produce);
+  form.appendChild(br.cloneNode());
+  form.appendChild(firmsize);
+  form.appendChild(br.cloneNode());
+  form.appendChild(submit);
+  
+  document.body.appendChild(form);
+}
+
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
